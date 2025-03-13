@@ -1,7 +1,8 @@
+// src/App.js
 import React, { useState } from "react";
-import "./styles.css";  // ✅ Ensure styles.css exists in src/
+import "./index.css";
 
-const RequestForm = () => {
+const App = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -65,11 +66,6 @@ const RequestForm = () => {
           <option value="Hardware Request">Hardware Request</option>
           <option value="Part Request">Part Request</option>
           <option value="Request Engineering Drawing">Request Engineering Drawing</option>
-          <option value="Request Electrical Mechanical Schematics">Request Electrical Mechanical Schematics</option>
-          <option value="Request Engineering Review">Request Engineering Review</option>
-          <option value="Non-Conforming Material">Non-Conforming Material</option>
-          <option value="Request BOM (Bill of Material)">Request BOM (Bill of Material)</option>
-          <option value="Request Packaging Materials">Request Packaging Materials - Crates, Pallets, etc.</option>
         </select>
 
         <label>Quantity (If applicable):</label>
@@ -93,4 +89,4 @@ const RequestForm = () => {
   );
 };
 
-export default RequestForm;
+export default App;
