@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { fetchRequestById } from '../api';
 
 const RequestDetails = () => {
   const { id } = useParams();
@@ -9,7 +9,7 @@ const RequestDetails = () => {
   useEffect(() => {
     const fetchRequest = async () => {
       try {
-        const response = await axios.get(`YOUR_API_ENDPOINT/${id}`);
+        const response = await fetchRequestById(id);
         setRequest(response.data);
       } catch (error) {
         console.error('Error fetching request details:', error);

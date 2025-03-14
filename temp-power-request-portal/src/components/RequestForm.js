@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { submitRequest } from '../api';
 
 const RequestForm = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ const RequestForm = () => {
     });
 
     try {
-      await axios.post('YOUR_API_ENDPOINT', formDataToSend);
+      await submitRequest(formDataToSend);
       alert('Request submitted successfully!');
     } catch (error) {
       console.error('Error submitting request:', error);

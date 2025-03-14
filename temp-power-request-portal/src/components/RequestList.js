@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchRequests } from '../api';
 
 const RequestList = () => {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    const fetchRequests = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get('YOUR_API_ENDPOINT');
+        const response = await fetchRequests();
         setRequests(response.data);
       } catch (error) {
         console.error('Error fetching requests:', error);
       }
     };
 
-    fetchRequests();
+    fetchData();
   }, []);
 
   return (
