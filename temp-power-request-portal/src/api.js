@@ -13,3 +13,6 @@ export const submitRequest = async (formData) => {
         throw error;
     }
 };
+export const fetchRequestById = async (id) => {
+  // Your fetch logic here
+};
