@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { submitRequest } from "../api";
+import { submitRequest, uploadFileToSharePoint } from "../api"; // ✅ Import the missing function
+
 
 const RequestForm = () => {
     const [formData, setFormData] = useState({
