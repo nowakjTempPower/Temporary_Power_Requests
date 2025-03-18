@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Power Automate Flow URL (replace with the actual trigger URL)
-const POWER_AUTOMATE_URL = "concat('https://us.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name); // Replace with your real URL
+const POWER_AUTOMATE_URL = "https://us.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name)"; // Replace with your real URL
 
 // Function to submit a new request
 export const submitRequest = async (formData) => {
