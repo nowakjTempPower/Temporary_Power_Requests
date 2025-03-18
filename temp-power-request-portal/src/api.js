@@ -20,21 +20,21 @@ export const submitRequest = async (formData) => {
 
 // Function to upload a file to SharePoint
 export const uploadFileToSharePoint = async (file) => {
-    try {
-        const formData = new FormData();
-        formData.append("file", file);
+  try {
+      const formData = new FormData();
+      formData.append("file", file);
 
-        const response = await axios.post(SHAREPOINT_UPLOAD_URL, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Accept": "application/json;odata=verbose",
-                // Add authentication headers if required
-            },
-        });
+      const response = await axios.post(SHAREPOINT_UPLOAD_URL, formData, {
+          headers: {
+              "Content-Type": "multipart/form-data",
+              "Accept": "application/json;odata=verbose",
+          },
+      });
 
-        return response.data; // This should return the uploaded file's URL
-    } catch (error) {
-        console.error("Error uploading file to SharePoint:", error);
-        throw error;
-    }
+      return response.data; // This should return the uploaded file's URL
+  } catch (error) {
+      console.error("Error uploading file to SharePoint:", error);
+      throw error;
+  }
 };
+
