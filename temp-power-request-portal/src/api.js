@@ -20,21 +20,35 @@ export const submitRequest = async (formData) => {
 
 // Function to upload a file to SharePoint
 export const uploadFileToSharePoint = async (file) => {
-  try {
-      const formData = new FormData();
-      formData.append("file", file);
+    try {
+        const formData = new FormData();
+        formData.append("file", file);
 
-      const response = await axios.post(SHAREPOINT_UPLOAD_URL, formData, {
-          headers: {
-              "Content-Type": "multipart/form-data",
-              "Accept": "application/json;odata=verbose",
-          },
-      });
+        const response = await axios.post(SHAREPOINT_UPLOAD_URL, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json;odata=verbose",
+            },
+        });
 
-      return response.data; // This should return the uploaded file's URL
-  } catch (error) {
-      console.error("Error uploading file to SharePoint:", error);
-      throw error;
-  }
+        return response.data; // This should return the uploaded file's URL
+    } catch (error) {
+        console.error("Error uploading file to SharePoint:", error);
+        throw error;
+    }
 };
 
+// Function to fetch request details by ID
+export const fetchRequestById = async (id) => {
+    try {
+        // Power Automate may not support direct REST calls with /requests/${id}
+        // Modify to send the ID as a JSON payload instead
+        const response = await axios.post(POWER_AUTOMATE_URL, { id }, {
+            headers: { "Content-Type": "application/json" }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching request details:", error);
+        throw error;
+    }
+};
