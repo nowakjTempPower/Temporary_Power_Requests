@@ -41,14 +41,23 @@ export const uploadFileToSharePoint = async (file) => {
 // Function to fetch request details by ID
 export const fetchRequestById = async (id) => {
     try {
-        // Power Automate may not support direct REST calls with /requests/${id}
-        // Modify to send the ID as a JSON payload instead
         const response = await axios.post(POWER_AUTOMATE_URL, { id }, {
             headers: { "Content-Type": "application/json" }
         });
         return response.data;
     } catch (error) {
         console.error("Error fetching request details:", error);
+        throw error;
+    }
+};
+
+// Function to fetch all requests
+export const fetchRequests = async () => {
+    try {
+        const response = await axios.get(`${POWER_AUTOMATE_URL}/requests`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching requests:", error);
         throw error;
     }
 };
